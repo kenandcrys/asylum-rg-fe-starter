@@ -53,6 +53,8 @@ function RenderLandingPage(props) {
           </div>
         </div>
       </div>
+
+
       <div className="view-more-data-btn-container">
         <Button
           className="BtnViewMoreData"
@@ -62,6 +64,7 @@ function RenderLandingPage(props) {
         >
           View the Data
         </Button>
+
         <Button
           className="BtnDownloadData"
           type="default"
@@ -89,7 +92,9 @@ function RenderLandingPage(props) {
         </div>
       </div>
       <div>
+
         {/* <div className="bottom-section">*/}
+        
         <div className="bottom-section-container">
           <h1 className="system-text">Systemic Disparity Insights</h1>
 
