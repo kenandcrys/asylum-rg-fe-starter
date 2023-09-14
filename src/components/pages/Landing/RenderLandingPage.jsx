@@ -38,22 +38,25 @@ function RenderLandingPage(props) {
       <div className="graphs-section">
         <div className="row">
           <div className="col-md-3 img-1">
-            <img src={GrantRatesByOfficeImg} alt="graph-by-office" />
-            <p>Seach Grant Rates By Office</p>
+            <a href="http://localhost:3000/graphs/all/office-heat-map">
+              <img src={GrantRatesByOfficeImg} alt="graph-by-office" />
+            </a>
+            <p>Search Grant Rates By Office</p>
           </div>
 
           <div className="col-md-3 img-2">
-            <img src={GrantRatesByNationalityImg} alt="graph-by-nationality" />
+            <a href='http://localhost:3000/graphs/all/citizenship'>
+            <img src={GrantRatesByNationalityImg} alt="graph-by-nationality" /></a>
             <p>Search Grant Rates By Nationality</p>
           </div>
 
           <div className="col-md-3 img-3">
-            <img src={GrantRatesOverTimeImg} alt="graph-over-time" />
+            <a href='http://localhost:3000/graphs/all/time-series'>
+            <img src={GrantRatesOverTimeImg} alt="graph-over-time" /></a>
             <p>Seacrh Grant Rates Over Time</p>
           </div>
         </div>
       </div>
-
 
       <div className="view-more-data-btn-container">
         <Button
@@ -92,9 +95,8 @@ function RenderLandingPage(props) {
         </div>
       </div>
       <div>
-
         {/* <div className="bottom-section">*/}
-        
+
         <div className="bottom-section-container">
           <h1 className="system-text">Systemic Disparity Insights</h1>
 
@@ -140,6 +142,7 @@ function RenderLandingPage(props) {
             </button>
           </div>
         </div>
+
         <p onClick={() => scrollToTop()} className="back-to-top">
           Back To Top ^
         </p>
