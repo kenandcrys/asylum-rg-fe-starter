@@ -1,6 +1,7 @@
 # Human Rights First: Asylum Report Generator
 
 ## North Star
+
 - A search tool to give a user-friendly view into a large dataset of asylum case decisions.
 - Similar to the [TRAC](https://trac.syr.edu/phptools/immigration/asylum/) database—a popular existing tool, but with many limitations.
   - Generate a table of results, a real-time visualization of outcomes, and a real-time graph to represent what the trend looks like over time.
@@ -8,11 +9,13 @@
   - Need to be able to download search results.
 
 ## Audiences
+
 - Journalists
 - Researchers
 - General public (asylum seekers, activists, etc.)
 
 ## Users
+
 - Administrators
   - Engineers who interact directly with infra (don’t need user auth)
   - Add/manage data
@@ -27,8 +30,10 @@
 
 ## Resources
 
-The following deployed site shows your exact deliverable and what you should be building: 
+The following deployed site shows your exact deliverable and what you should be building:
+
 - [Deployed Site](https://asylum-rg-fe.vercel.app/)
 
 This is what the raw data looks like from HRF:
+
 - [Sample Case Data](https://github.com/BloomTech-Labs/asylum-rg-fe-starter/blob/main/src/data/COW2021001887-I589Data.csv)

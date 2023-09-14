@@ -1,6 +1,6 @@
 ## Description
 
-___Add your PR description here, deleting this example___
+**_Add your PR description here, deleting this example_**
 
 #### Video Link
 
@@ -8,7 +8,7 @@ ___Add your PR description here, deleting this example___
 
 #### Jira Link
 
-___Paste your jira ticket link here, deleting this example___
+**_Paste your jira ticket link here, deleting this example_**
 
 (Example below):
 
@@ -16,7 +16,7 @@ https://bloomtechlabs.atlassian.net/browse/BL-637
 
 ## Type of change
 
-___Please delete options that are not relevant.___
+**_Please delete options that are not relevant._**
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
