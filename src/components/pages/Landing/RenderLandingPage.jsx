@@ -1,8 +1,10 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import React from 'react';
 // ADD IMPORTS BACK FOR GRAPHS SECTION
-// import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
-// import GrantRatesByNationalityImg from '../../../styles/Images/pie-chart-no-text.png';
-// import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
+import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
+import GrantRatesByNationalityImg from '../../../styles/Images/pie-chart-no-text.png';
+import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
 import HrfPhoto from '../../../styles/Images/paper-stack.jpg';
 import '../../../styles/RenderLandingPage.less';
 import { Button } from 'antd';
@@ -32,14 +34,41 @@ function RenderLandingPage(props) {
       </div>
 
       {/* Graphs Section: Add code here for the graphs section for your first ticket */}
-      {/* <div className="graphs-section"> */}
+
+      <div className="graphs-section">
+        <div className="row">
+          <div className="col-md-3 img-1">
+            <img src={GrantRatesByOfficeImg} alt="graph-by-office" />
+            <p>Seach Grant Rates By Office</p>
+          </div>
+
+          <div className="col-md-3 img-2">
+            <img src={GrantRatesByNationalityImg} alt="graph-by-nationality" />
+            <p>Search Grant Rates By Nationality</p>
+          </div>
+
+          <div className="col-md-3 img-3">
+            <img src={GrantRatesOverTimeImg} alt="graph-over-time" />
+            <p>Seacrh Grant Rates Over Time</p>
+          </div>
+        </div>
+      </div>
       <div className="view-more-data-btn-container">
         <Button
+          className="BtnViewMoreData"
           type="default"
           style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
           onClick={() => history.push('/graphs')}
         >
           View the Data
+        </Button>
+        <Button
+          className="BtnDownloadData"
+          type="default"
+          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          onClick={() => history.push('/graphs')}
+        >
+          Download the Data
         </Button>
       </div>
 
@@ -60,8 +89,52 @@ function RenderLandingPage(props) {
         </div>
       </div>
       <div>
-        {/* Bottom Section: Add code here for the graphs section for your first ticket */}
         {/* <div className="bottom-section">*/}
+        <div className="bottom-section-container">
+          <h1 className="system-text">Systemic Disparity Insights</h1>
+
+          <div className="system-text-container">
+            <div>
+              <h2>36%</h2>
+              <p className="text">
+                By the end of the Trump administration, the average
+                <br />
+                asylum office grant rate had fallen 36 percent from an
+                <br />
+                average of 44 percent in fiscal year 2016 to 28 percent
+                <br /> in fiscal year 2020.
+              </p>
+            </div>
+
+            <div>
+              <h2>5%</h2>
+              <p className="text">
+                The New Yor asylum office grant rate dropped to 5<br />
+                percent in fiscal year 2020.
+              </p>
+            </div>
+
+            <div>
+              <h2>6x Lower</h2>
+              <p className="text">
+                Between fiscal year 2017 and 2020, the New York
+                <br />
+                asylum office's average grant was six times lower
+                <br />
+                than the San Francisco asylum office.
+              </p>
+            </div>
+          </div>
+          <div>
+            <button
+              className="systemBtn"
+              type="default"
+              style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+            >
+              Read More
+            </button>
+          </div>
+        </div>
         <p onClick={() => scrollToTop()} className="back-to-top">
           Back To Top ^
         </p>
