@@ -10,7 +10,7 @@ import '../../../styles/RenderLandingPage.less';
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 // for the purposes of testing PageNav
-// import PageNav from '../../common/PageNav';
+//di import PageNav from '../../common/PageNav';
 
 function RenderLandingPage(props) {
   const scrollToTop = () => {
@@ -24,14 +24,14 @@ function RenderLandingPage(props) {
     <div className="main">
       <div className="header">
         <div className="header-text-container">
-          <h1>Asylum Office Grant Rate Tracker</h1>
-          <h3>
-            The Asylum Office Grant Rate Tracker provides asylum seekers,
-            researchers, policymakers, and the public an interactive tool to
-            explore USCIS data on Asylum Office decisions
-          </h3>
-        </div>
+        <h1>Asylum Office Grant Rate Tracker</h1>
+        <h3>
+          The Asylum Office Grant Rate Tracker provides asylum seekers,
+          researchers, policymakers, and the public an interactive tool to
+          explore USCIS data on Asylum Office decisions
+        </h3>
       </div>
+    </div>
 
       {/* Graphs Section: Add code here for the graphs section for your first ticket */}
 
@@ -41,19 +41,19 @@ function RenderLandingPage(props) {
             <a href="http://localhost:3000/graphs/all/office-heat-map">
               <img src={GrantRatesByOfficeImg} alt="graph-by-office" />
             </a>
-            <p>Search Grant Rates By Office</p>
+            <p>Grant Rates By Office</p>
           </div>
 
           <div className="col-md-3 img-2">
             <a href='http://localhost:3000/graphs/all/citizenship'>
             <img src={GrantRatesByNationalityImg} alt="graph-by-nationality" /></a>
-            <p>Search Grant Rates By Nationality</p>
+            <p>Grant Rates By Nationality</p>
           </div>
 
           <div className="col-md-3 img-3">
             <a href='http://localhost:3000/graphs/all/time-series'>
             <img src={GrantRatesOverTimeImg} alt="graph-over-time" /></a>
-            <p>Seacrh Grant Rates Over Time</p>
+            <p>Grant Rates Over Time</p>
           </div>
         </div>
       </div>
@@ -94,9 +94,9 @@ function RenderLandingPage(props) {
           </h3>
         </div>
       </div>
+     
+        {/* <div className="bottom-section">*/} 
       <div>
-        {/* <div className="bottom-section">*/}
-
         <div className="bottom-section-container">
           <h1 className="system-text">Systemic Disparity Insights</h1>
 
