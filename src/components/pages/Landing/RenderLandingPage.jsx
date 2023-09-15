@@ -20,6 +20,8 @@ function RenderLandingPage(props) {
 
   const history = useHistory();
 
+  const style = { backgroundColor: '#404C4A', color: '#FFFFFF' };
+
   return (
     <div className="main">
       <div className="header">
@@ -58,11 +60,13 @@ function RenderLandingPage(props) {
         </div>
       </div>
 
+      {/*  View More and Download Buttons */}
+
       <div className="view-more-data-btn-container">
         <Button
           className="BtnViewMoreData"
           type="default"
-          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          style={style}
           onClick={() => history.push('/graphs')}
         >
           View the Data
@@ -71,7 +75,7 @@ function RenderLandingPage(props) {
         <Button
           className="BtnDownloadData"
           type="default"
-          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+          style={style}
           onClick={() => history.push('/graphs')}
         >
           Download the Data
@@ -136,7 +140,7 @@ function RenderLandingPage(props) {
             <button
               className="systemBtn"
               type="default"
-              style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+              style={style}
             >
               Read More
             </button>
