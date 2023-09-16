@@ -9,8 +9,62 @@ import HrfPhoto from '../../../styles/Images/paper-stack.jpg';
 import '../../../styles/RenderLandingPage.less';
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 // for the purposes of testing PageNav
 //di import PageNav from '../../common/PageNav';
+
+
+const handleDownload = () => {
+  // Define the URL to fetch data from
+  const apiUrl = "https://hrf-asylum-be-b.herokuapp.com/cases";
+
+  axios.get(apiUrl)
+    .then((response) => {
+      // Check if the response status is OK (status code 200)
+      if (response.status === 200) {
+        // Get the data from the response
+        const data = response.data;
+
+        // Converted the data to a JSON string
+        const plainTextData = JSON.stringify(data, null, 2);
+
+        // Create a Blob (Binary Large Object) from the JSON data
+        const blob = new Blob([plainTextData], { type: "text/plain" });
+
+        // Create a URL for the Blob
+        const url = URL.createObjectURL(blob);
+
+        // Create an anchor element for the download link
+        const downloadLink = document.createElement("a");
+
+        // Set the href attribute to the Blob's URL
+        downloadLink.href = url;
+
+        // Set the download attribute to specify the filename
+        downloadLink.download = "asylum_data.txt";
+
+        // Simulate a click on the anchor element to trigger the download
+        downloadLink.click();
+
+        // Clean up by revoking the URL
+        URL.revokeObjectURL(url);
+      } else {
+      
+        console.error(`Error: Received status code ${response.status}`);
+      }
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error("Error fetching data:", error);
+    });
+};
+
+const readMoreButton = document.querySelector(".systemBtn");
+
+readMoreButton.addEventListener("click", () => {
+  // Navigate to the specified URL when the button is clicked
+  window.location.href = "https://humanrightsfirst.org/about-us/";
+});
 
 function RenderLandingPage(props) {
   const scrollToTop = () => {
@@ -73,10 +127,11 @@ function RenderLandingPage(props) {
         </Button>
 
         <Button
+          id='download-button'
           className="BtnDownloadData"
           type="default"
           style={style}
-          onClick={() => history.push('/graphs')}
+          onClick={handleDownload}
         >
           Download the Data
         </Button>
