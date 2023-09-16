@@ -59,12 +59,19 @@ const handleDownload = () => {
     });
 };
 
-const readMoreButton = document.querySelector(".systemBtn");
 
-readMoreButton.addEventListener("click", () => {
-  // Navigate to the specified URL when the button is clicked
-  window.location.href = "https://humanrightsfirst.org/about-us/";
+document.addEventListener("DOMContentLoaded", function() {
+  // Add a "click" event listener to the document body
+  document.body.addEventListener("click", function(event) {
+    // Check if the clicked element has the class "systemBtn"
+    if (event.target.classList.contains("systemBtn")) {
+      // Navigate to the specified URL when the button is clicked
+      window.location.href = "https://humanrightsfirst.org/about-us/";
+    }
+  });
 });
+
+
 
 function RenderLandingPage(props) {
   const scrollToTop = () => {
