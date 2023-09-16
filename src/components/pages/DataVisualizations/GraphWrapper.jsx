@@ -69,12 +69,12 @@ function GraphWrapper(props) {
         |       })                          [ no `office` param in the query    ]         |
         |                                                                                 |
           _                                                                             _
-                                   -- Mack 
+                       -- Mack 
     
     */
 
       const URL = "https://hrf-asylum-be-b.herokuapp.com/cases";
-       
+      
 
     if (office === 'all' || !office) {
 
@@ -82,7 +82,7 @@ function GraphWrapper(props) {
 
       axios
         .get(`${URL}/fiscalSummary`, {
-         
+        
           params: {
             from: years[0],
             to: years[1],
@@ -101,15 +101,11 @@ function GraphWrapper(props) {
       ])
       .then(([callA, callB])=> {
       const yearResults = callA.data.yearResults;
-      const citizenshipSummary = callB.data;
-
-      const combinedData = [{yearResults, citizenshipSummary}];
-     
-
-       console.log([combinedData]);
+      const citizenshipResults = callB.data;
+      
+      const combinedData = [{yearResults, citizenshipResults}];
+    
       stateSettingCallback(view, office,[combinedData][0]);
-
-     
 
       })
       .catch(err => {
@@ -117,26 +113,6 @@ function GraphWrapper(props) {
         });
    }
   }
-
-  //  const a = 
-  //       .then(result => {
-
-  //          // <-- `test_data` here can be simply replaced by `result.data` in prod!
-  //       })
-        
-  //   } else {
-  //  const b = await 
-  //       .then(result => {
-         
-  //         stateSettingCallback(view, office, [result.data]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-  //       })
-  //       .catch(err => {
-  //         console.error(err);
-  //       });
- 
-
-
-
 
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
