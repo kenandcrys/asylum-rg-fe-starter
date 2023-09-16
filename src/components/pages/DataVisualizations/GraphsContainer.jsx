@@ -26,17 +26,17 @@ function GraphsContainer() {
     'New Orleans, LA',
   ];
   function handle_office_select(value) {
-    // if (view === 'office-heat-map') {
-    //   set_view('time-series');
-    // }
-    // if (value === 'All') {
-    //   history.push(
-    //     `/graphs/all/${view === 'office-heat-map' ? 'time-series' : view}`
-    //   );
-    // }
-    // history.push(
-    //   `/graphs/${value}/${view === 'office-heat-map' ? 'time-series' : view}`
-    // );
+    if (view === 'office-heat-map') {
+      set_view('time-series');
+    }
+    if (value === 'All') {
+      history.push(
+        `/graphs/all/${view === 'office-heat-map' ? 'time-series' : view}`
+      );
+    }
+    history.push(
+      `/graphs/${value}/${view === 'office-heat-map' ? 'time-series' : view}`
+    );
 
     switch (value) {
       case 'All Offices':

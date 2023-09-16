@@ -44,6 +44,7 @@ const rawApiDataToPlotlyReadyInfo = (view, office, data) => {
     };
   }
   for (let yearResults of data[0]['yearResults']) {
+        
     for (let yearData of yearResults['yearData']) {
       officeData[yearData['office']]['xYears'].push(yearResults['fiscal_year']);
       officeData[yearData['office']]['totals'].push(yearData['totalCases']);
