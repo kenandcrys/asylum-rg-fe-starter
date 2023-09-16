@@ -100,18 +100,16 @@ function GraphWrapper(props) {
         })
       ])
       .then(([callA, callB])=> {
-      const dataA = callA.data;
-      const dataB = callB.data;
+      const yearResults = callA.data.yearResults;
+      const citizenshipSummary = callB.data;
 
-      const combinedData = {
-        fiscalSummary: [dataA],
-        citizenshipSummary: [dataB],
-      };
+      const combinedData = [{yearResults, citizenshipSummary}];
+     
 
-      console.log(combinedData);
+       console.log([combinedData]);
+      stateSettingCallback(view, office,[combinedData][0]);
 
-
-      // stateSettingCallback(view, office, [combinedData]);
+     
 
       })
       .catch(err => {
@@ -123,7 +121,7 @@ function GraphWrapper(props) {
   //  const a = 
   //       .then(result => {
 
-  //         ; // <-- `test_data` here can be simply replaced by `result.data` in prod!
+  //          // <-- `test_data` here can be simply replaced by `result.data` in prod!
   //       })
         
   //   } else {
