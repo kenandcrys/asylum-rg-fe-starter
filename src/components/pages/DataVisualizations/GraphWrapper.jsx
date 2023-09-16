@@ -50,37 +50,23 @@ function GraphWrapper(props) {
         break;
     }
   }
- function updateStateWithNewData(years, view, office, stateSettingCallback) {
-    /*
-          _                                                                             _
-        |                                                                                 |
-        |   Example request for once the `/summary` endpoint is up and running:           |
-        |                                                                                 |
-        |     `${url}/summary?to=2022&from=2015&office=ZLA`                               |
-        |                                                                                 |
-        |     so in axios we will say:                                                    |
-        |                                                                                 |     
-        |       axios.get(`${url}/summary`, {                                             |
-        |         params: {                                                               |
-        |           from: <year_start>,                                                   |
-        |           to: <year_end>,                                                       |
-        |           office: <office>,       [ <-- this one is optional! when    ]         |
-        |         },                        [ querying by `all offices` there's ]         |
-        |       })                          [ no `office` param in the query    ]         |
-        |                                                                                 |
-          _                                                                             _
-                       -- Mack 
-    
-    */
+ async function updateStateWithNewData(years, view, office, stateSettingCallback) {
 
+
+
+      // create URL variable to API to make it dynamic.
       const URL = "https://hrf-asylum-be-b.herokuapp.com/cases";
-      
+    /* 
+      In the if statement. I refactored the code to a Promise.all method which takes an array of promises. This allows for consectutive api calls.
+
+
+    */ 
 
     if (office === 'all' || !office) {
 
       Promise.all([
 
-      axios
+      await axios
         .get(`${URL}/fiscalSummary`, {
         
           params: {
@@ -89,7 +75,7 @@ function GraphWrapper(props) {
           },
         }),
 
-      axios
+     await axios
         .get(`${URL}/citizenshipSummary`, {
           
           params: {
@@ -111,7 +97,7 @@ function GraphWrapper(props) {
       .catch(err => {
           console.error(err);
         });
-   }
+    }
   }
 
   const clearQuery = (view, office) => {
