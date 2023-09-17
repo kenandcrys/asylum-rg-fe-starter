@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 // for the purposes of testing PageNav
 //di import PageNav from '../../common/PageNav';
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 const handleDownload = () => {
   // Define the URL to fetch data from
@@ -81,7 +81,7 @@ function RenderLandingPage(props) {
   };
 
   const history = useHistory();
-
+  const { isAuthenticated } = useAuth0();
   const style = { backgroundColor: '#404C4A', color: '#FFFFFF' };
 
   return (
@@ -105,23 +105,23 @@ function RenderLandingPage(props) {
 
       <div className="graphs-section">
         <div className="row">
-          <div className="col-md-3 img-1">
+          <div className="col-md-3 img-1 container1">
             <a href="http://localhost:3000/graphs/all/office-heat-map">
               <img src={GrantRatesByOfficeImg} alt="graph-by-office" />
             </a>
-            <p>Grant Rates By Office</p>
+            <p>Rates By Office</p>
           </div>
 
-          <div className="col-md-3 img-2">
+          <div className="col-md-3 img-2 container2">
             <a href='http://localhost:3000/graphs/all/citizenship'>
             <img src={GrantRatesByNationalityImg} alt="graph-by-nationality" /></a>
-            <p>Grant Rates By Nationality</p>
+            <p>Rates By Nationality</p>
           </div>
 
-          <div className="col-md-3 img-3">
+          <div className="col-md-3 img-3 container3">
             <a href='http://localhost:3000/graphs/all/time-series'>
             <img src={GrantRatesOverTimeImg} alt="graph-over-time" /></a>
-            <p>Grant Rates Over Time</p>
+            <p>Rates Over Time</p>
           </div>
         </div>
       </div>
@@ -138,7 +138,7 @@ function RenderLandingPage(props) {
           View the Data
         </Button>
 
-        <Button
+       { isAuthenticated && <Button
           id='download-button'
           className="BtnDownloadData"
           type="default"
@@ -146,7 +146,7 @@ function RenderLandingPage(props) {
           onClick={handleDownload}
         >
           Download the Data
-        </Button>
+        </Button> }
       </div>
 
       <div className="middle-section">
