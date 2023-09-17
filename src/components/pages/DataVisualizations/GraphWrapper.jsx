@@ -50,55 +50,50 @@ function GraphWrapper(props) {
         break;
     }
   }
- async function updateStateWithNewData(years, view, office, stateSettingCallback) {
 
-
-
-      // create URL variable to API to make it dynamic.
-      const URL = "https://hrf-asylum-be-b.herokuapp.com/cases";
-    /* 
-      In the if statement. I refactored the code to a Promise.all method which takes an array of promises. This allows for consectutive api calls.
-
-
-    */ 
-
+  
+// This is a function that fetches and processes data from an API.
+async function updateStateWithNewData(years, view, office, stateSettingCallback) {
+  try {
+    // Set the API URL we want to call.
+    const URL = "https://hrf-asylum-be-b.herokuapp.com/cases";
+    
+    // Check if the 'office' parameter is 'all' or empty.
     if (office === 'all' || !office) {
-
-      Promise.all([
-
-      await axios
-        .get(`${URL}/fiscalSummary`, {
-        
+      // Use async/await to make two API calls simultaneously and wait for their results.
+      const [callA, callB] = await Promise.all([
+        // Make the first API call to get fiscal summary data.
+        axios.get(`${URL}/fiscalSummary`, {
           params: {
-            from: years[0],
-            to: years[1],
+            from: years[0], // Start year
+            to: years[1],   // End year
           },
         }),
-
-     await axios
-        .get(`${URL}/citizenshipSummary`, {
-          
+        // Make the second API call to get citizenship summary data.
+        axios.get(`${URL}/citizenshipSummary`, {
           params: {
-            from: years[0],
-            to: years[1],
-            office: office,
+            from: years[0], // Start year
+            to: years[1],   // End year
+            office: office, // Office filter
           },
-        })
-      ])
-      .then(([callA, callB])=> {
+        }),
+      ]);
+
+      // Extract data from the API responses.
       const yearResults = callA.data.yearResults;
       const citizenshipResults = callB.data;
-      
-      const combinedData = [{yearResults, citizenshipResults}];
-    
-      stateSettingCallback(view, office,[combinedData][0]);
 
-      })
-      .catch(err => {
-          console.error(err);
-        });
+      // Combine the data into an array.
+      const combinedData = [{ yearResults, citizenshipResults }];
+
+      // Call the provided callback function with the data.
+      stateSettingCallback(view, office, combinedData[0]);
     }
+  } catch (err) {
+    // Handle any errors that occur during the API calls.
+    console.error(err);
   }
+}
 
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
