@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import LoginButton from '../Auth0/Login_Button';
+import LogoutButton from '../Auth0/Logout_Button';
 import React from 'react';
 // ADD IMPORTS BACK FOR GRAPHS SECTION
 import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
@@ -84,9 +85,13 @@ function RenderLandingPage(props) {
   const style = { backgroundColor: '#404C4A', color: '#FFFFFF' };
 
   return (
+    
     <div className="main">
+    
       <div className="header">
         <div className="header-text-container">
+            <LoginButton /> 
+            <LogoutButton />
         <h1>Asylum Office Grant Rate Tracker</h1>
         <h3>
           The Asylum Office Grant Rate Tracker provides asylum seekers,
