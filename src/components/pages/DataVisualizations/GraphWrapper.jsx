@@ -53,7 +53,6 @@ function GraphWrapper(props) {
 
 async function updateStateWithNewData(years, view, office, stateSettingCallback) {
 
-    alert("Please wait I am working my ass off");
   const URL = "https://hrf-asylum-be-b.herokuapp.com/cases";
 
   if (office === 'all' || !office) {
