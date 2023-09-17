@@ -13,6 +13,8 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 // for the purposes of testing PageNav
 //di import PageNav from '../../common/PageNav';
+
+// Import the useAuth0 hook from auth0-react
 import { useAuth0 } from '@auth0/auth0-react';
 
 const handleDownload = () => {
@@ -81,6 +83,8 @@ function RenderLandingPage(props) {
   };
 
   const history = useHistory();
+
+   // Destructure isAuthenticated from the useAuth0 hook.
   const { isAuthenticated } = useAuth0();
   const style = { backgroundColor: '#404C4A', color: '#FFFFFF' };
 
@@ -137,7 +141,7 @@ function RenderLandingPage(props) {
         >
           View the Data
         </Button>
-
+        {/* Shows download button only when logged in */}
        { isAuthenticated && <Button
           id='download-button'
           className="BtnDownloadData"

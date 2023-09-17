@@ -7,7 +7,7 @@ const Profile = () => {
     if (isLoading) {
     return <div>Loading ...</div>;
     }
-
+        // In this return the user information is dispalyed on the screen with a picture if available
     return (
     isAuthenticated && (
         <div>

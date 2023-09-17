@@ -26,24 +26,31 @@ import { colors } from './styles/data_vis_colors';
 const { primary_accent_color } = colors;
 
 const store = configureStore({ reducer: reducer });
+// Import React and ReactDOM if not already imported
+
+
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-    <Auth0Provider
-    domain="dev-5zpslr4frf7huwvq.us.auth0.com"
-    clientId="Xz01Tp6syHGLWGpl6F6xv4PMHaX6VNQm"
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}
-    >
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      
+      {/* Start of the Auth0Provider component with authentication configuration */}
+      <Auth0Provider
+        domain="dev-5zpslr4frf7huwvq.us.auth0.com"   // Auth0 domain
+        clientId="Xz01Tp6syHGLWGpl6F6xv4PMHaX6VNQm"   // Auth0 client ID
+        authorizationParams={{                      // Additional authorization parameters
+          redirect_uri: window.location.origin      // Redirect URI after authentication
+        }}
+      >
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
       </Auth0Provider>
     </Provider>
   </Router>,
+
   document.getElementById('root')
 );
+
 
 export function App() {
   const { Footer, Header } = Layout;
@@ -60,11 +67,13 @@ export function App() {
         }}
       >
         <HeaderContent />
-       
       </Header>
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
+
+        {/*  create a route to the profile link only if user is logged in */}
+
         {isAuthenticated && (
           <Route path="/profile" component={Profile} />
         )}
