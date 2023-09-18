@@ -35,8 +35,8 @@ ReactDOM.render(
       
       {/* Start of the Auth0Provider component with authentication configuration */}
       <Auth0Provider
-        domain="dev-5zpslr4frf7huwvq.us.auth0.com"   // Auth0 domain
-        clientId="Xz01Tp6syHGLWGpl6F6xv4PMHaX6VNQm"   // Auth0 client ID
+        domain={`${process.env.REACT_APP_DOMAIN}`} // Auth0 domain
+        clientId= {`${process.env.REACT_APP_CLIENT_ID}`}  // Auth0 client ID
         authorizationParams={{                      // Additional authorization parameters
           redirect_uri: window.location.origin      // Redirect URI after authentication
         }}
